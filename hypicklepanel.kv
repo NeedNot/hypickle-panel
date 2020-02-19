@@ -38,7 +38,7 @@
         screen_one: screen_one
         screen_two: screen_two
         screen_three: screen_three
-
+        screen_four: screen_four
         ScreenOne:
             id: screen_one
             name: 'player'
@@ -52,6 +52,11 @@
         ScreenThree:
             id: screen_three
             name: 'boosters'
+            manager: screen_manager
+
+        ScreenFour:
+            id: screen_three
+            name: 'watchdog'
             manager: screen_manager
 
 
@@ -154,7 +159,7 @@
             valign: 'middle'
             text_size: cm(24), cm(16)
         Label:
-            id: ap
+            id: bw_wins
             markup: True
             text: 'Wins: '
             size_hint: 1.03, 1.23
@@ -163,7 +168,7 @@
             valign: 'middle'
             text_size: cm(24), cm(16)
             Label:
-                id: ap
+                id: bw_wins
                 markup: True
                 text: app.bw_wins
                 size_hint: 1.03, 1.23
@@ -171,7 +176,24 @@
                 halign: 'left'
                 valign: 'middle'
                 text_size: cm(24), cm(16)
-
+            Label:
+                id: bw_losses
+                markup: True
+                text: 'Losses'
+                size_hint: 1.03, 1.23
+                font_size: 30
+                halign: 'left'
+                valign: 'middle'
+                text_size: cm(24), cm(16)
+            Label:
+                id: bw_losses
+                markup: True
+                text: app.losses
+                size_hint: 1.03, 1.23
+                font_size: 30
+                halign: 'left'
+                valign: 'middle'
+                text_size: cm(24), cm(16)
     FloatLayout:
         Image:
             id: player_head
@@ -254,7 +276,7 @@
                 id: user_button
                 text:'Watch Dog Bans'
                 group: 'navbar'
-                on_press: root.manager.current = 'Player'
+                on_press: root.manager.current = 'watchdog'
                 size_hint_y: .05
                 background_color: (.3,.3,.3,1)
                 background_normal: ''
@@ -268,6 +290,15 @@
             id: content
             size_hint_x: 2
 <ScreenTwo>:
+    Label:
+        id: comingsoon
+        text: 'coming soon :)'
+        font_size: 50
+        halign: 'center'
+        valign: 'middle'
+        color: 1,1,1,1
+
+
     BoxLayout:
         id: content_nav
 
@@ -310,7 +341,7 @@
                 id: user_button
                 text:'Watch Dog Bans'
                 group: 'navbar'
-                on_press: root.manager.current = 'Player'
+                on_press: root.manager.current = 'watchdog'
                 size_hint_y: .05
                 background_color: (.3,.3,.3,1)
                 background_normal: ''
@@ -325,6 +356,15 @@
             size_hint_x: 2
 
 <ScreenThree>:
+    Label:
+        id: comingsoon
+        text: 'coming soon :)'
+        font_size: 50
+        halign: 'center'
+        valign: 'middle'
+        color: 1,1,1,1
+
+
     BoxLayout:
         id: content_nav
 
@@ -367,7 +407,73 @@
                 id: user_button
                 text:'Watch Dog Bans'
                 group: 'navbar'
-                on_press: root.manager.current = 'Player'
+                on_press: root.manager.current = 'watchdog'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+
+            Label:
+                id: sp
+                text: ''
+                size_hint_y: .4
+
+        BoxLayout:
+            id: content
+            size_hint_x: 2
+
+<ScreenFour>:
+    Label:
+        id: comingsoon
+        text: 'coming soon :)'
+        font_size: 50
+        halign: 'center'
+        valign: 'middle'
+        color: 1,1,1,1
+
+
+    BoxLayout:
+        id: content_nav
+
+        BoxLayout:
+            id: nav_tabs
+            size_hint_x: .3
+            orientation: 'vertical'
+            spacing: 3
+            canvas.before:
+                Color:
+                    rgba: (.4,.4,.4,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Button:
+                id: user_button
+                text:'Your Stats'
+                group: 'navbar'
+                on_press: root.manager.current = 'player'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Your Guild'
+                group: 'navbar'
+                on_press: root.manager.current = 'guild'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Boosters'
+                group: 'navbar'
+                on_press: root.manager.current = 'boosters'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Watch Dog Bans'
+                group: 'navbar'
+                on_press: root.manager.current = 'watchdog'
                 size_hint_y: .05
                 background_color: (.3,.3,.3,1)
                 background_normal: ''

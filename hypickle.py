@@ -58,9 +58,14 @@ online_offline = "[color=55FF55]Playing: " + player_data['last_game'] if player_
 
 
 try:
-    bw_wins = player_data['stats']['BedWars']['gamemodes']['doubles']['wins']
+    bw_wins = player_data['stats']['BedWars']['wins']
 except KeyError:
     bw_wins = 0
+
+try:
+    bw_losses = player_data['stats']['BedWars']['losses']
+except KeyError:
+    bw_losses = 0
 
 rank_raw = player_data['rank']
 if rank_raw == "HELPER": lastlogin = 1
@@ -94,7 +99,8 @@ Config.set('graphics', 'minimum_width', 1000)
 Config.set('graphics', 'minimum_height', 650)
 
 
-
+class ScreenFour(Screen):
+    pass
 
 class ScreenThree(Screen):
     pass
@@ -110,6 +116,7 @@ class Manager(ScreenManager):
     screen_one = ObjectProperty(None)
     screen_two = ObjectProperty(None)
     screen_three = ObjectProperty(None)
+    screen_four = ObjectProperty(None)
 
 class HypicklePanel(BoxLayout):
     def __init__(self, **kwargs):
@@ -128,7 +135,8 @@ class Hypicklepanel(App):
         self.firstlogin = "First Login: " + firstlogin
         self.lastlogin = "Last Login: " + lastlogin
         self.online = online_offline
-        self.bw_wins = "test"
+        self.bw_wins = bw_wins
+        self.bw_losses = bw_losses
         return HypicklePanel()
 
 if __name__ =='__main__':
