@@ -1,0 +1,382 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<Hypicklepanel>:
+
+    id: main_win
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: (.2,.2,.2,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+
+    BoxLayout:
+        id: top_nav
+        size_hint_y: None
+        height: 40
+        canvas.before:
+            Color:
+                rgba: (.1,.1,.1,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            text: 'Hypickle Panel'
+            bold: True
+            size_hint: (1,None)
+            height: 40
+            font_size: 30
+
+
+    Manager:
+        transition: NoTransition()
+        id: screen_manager
+        screen_one: screen_one
+        screen_two: screen_two
+        screen_three: screen_three
+
+        ScreenOne:
+            id: screen_one
+            name: 'player'
+            manager: screen_manager
+
+        ScreenTwo:
+            id: screen_two
+            name: 'guild'
+            manager: screen_manager
+
+        ScreenThree:
+            id: screen_three
+            name: 'boosters'
+            manager: screen_manager
+
+
+<ScreenOne>:
+    FloatLayout:
+        Image:
+            id: player_head
+            source: 'images/playerbody.png'
+            allow_stretch: False
+            size_hint: .37, 1.7
+            size: self.texture_size
+        Label:
+            id: player_rank_name
+            markup: True
+            text: app.rank_name
+            bold: True
+            size_hint: 1.26, 1.85
+            font_size: 70
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(40), cm(16)
+        Label:
+            id: quests
+            markup: True
+            bold: True
+            text: app.quests
+            size_hint: .95, 1.5
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: ap
+            markup: True
+            bold: True
+            text: app.ap
+            size_hint: .95, 1.57
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: karma
+            markup: True
+            bold: True
+            text: app.karma
+            size_hint: 1.4, 1.57
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: guild
+            markup: True
+            bold: True
+            text: app.guild
+            size_hint: 1.4, 1.5
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: firstlogin
+            markup: True
+            bold: True
+            text: app.firstlogin
+            size_hint: 1.75, 1.57
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: lastlogin
+            markup: True
+            bold: True
+            text: app.lastlogin
+            size_hint: 1.75, 1.5
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: online_offline
+            markup: True
+            bold: True
+            text: app.online
+            size_hint: 1.5, .07
+            font_size: 30
+            halign: 'right'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: ap
+            markup: True
+            bold: True
+            text: 'Bed Wars:'
+            size_hint: 1.03, 1.35
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: ap
+            markup: True
+            text: 'Wins: '
+            size_hint: 1.03, 1.23
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+            Label:
+                id: ap
+                markup: True
+                text: app.bw_wins
+                size_hint: 1.03, 1.23
+                font_size: 30
+                halign: 'left'
+                valign: 'middle'
+                text_size: cm(24), cm(16)
+
+    FloatLayout:
+        Image:
+            id: player_head
+            source: 'images/bedwars.png'
+            allow_stretch: False
+            size_hint: .51, 1.35
+            size: self.texture_size
+
+
+        ProgressBar:
+            size_hint_x:  .1495
+            size_hint_y: 1.7
+            max: 0.99
+            value: app.level
+            pos_hint: {'x': .23675, 'center_y': .825}
+            canvas:
+                BorderImage:
+                    border: (12, 12, 12, 12)
+                    pos: self.x, self.center_y - 10
+                    size: self.width, 20
+                    source: 'images/grey.png'
+                BorderImage:
+                    border: [int(min(self.width * (self.value / float(self.max)) if self.max else 0, 12))] * 4
+                    pos: self.x, self.center_y - 10
+                    size: self.width * (self.value / float(self.max)) if self.max else 0, 20
+                    source: 'images/green.png'
+
+
+        Label:
+            id: player_level
+            markup: True
+            text: app.level_format
+            bold: True
+            size_hint: .62, 1.72
+            font_size: 50
+            halign: 'center'
+            valign: 'middle'
+            color: 1,1,1,1
+
+
+    BoxLayout:
+        id: content_nav
+
+        BoxLayout:
+            id: nav_tabs
+            size_hint_x: .3
+            orientation: 'vertical'
+            spacing: 3
+            canvas.before:
+                Color:
+                    rgba: (.4,.4,.4,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Button:
+                id: user_button
+                text:'Your Stats'
+                group: 'navbar'
+                on_press: root.manager.current = 'player'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Your Guild'
+                group: 'navbar'
+                on_press: root.manager.current = 'guild'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Boosters'
+                group: 'navbar'
+                on_press: root.manager.current = 'boosters'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Watch Dog Bans'
+                group: 'navbar'
+                on_press: root.manager.current = 'Player'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+
+            Label:
+                id: sp
+                text: ''
+                size_hint_y: .4
+
+        BoxLayout:
+            id: content
+            size_hint_x: 2
+<ScreenTwo>:
+    BoxLayout:
+        id: content_nav
+
+        BoxLayout:
+            id: nav_tabs
+            size_hint_x: .3
+            orientation: 'vertical'
+            spacing: 3
+            canvas.before:
+                Color:
+                    rgba: (.4,.4,.4,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Button:
+                id: user_button
+                text:'Your Stats'
+                group: 'navbar'
+                on_press: root.manager.current = 'player'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Your Guild'
+                group: 'navbar'
+                on_press: root.manager.current = 'guild'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Boosters'
+                group: 'navbar'
+                on_press: root.manager.current = 'boosters'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Watch Dog Bans'
+                group: 'navbar'
+                on_press: root.manager.current = 'Player'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+
+            Label:
+                id: sp
+                text: ''
+                size_hint_y: .4
+
+        BoxLayout:
+            id: content
+            size_hint_x: 2
+
+<ScreenThree>:
+    BoxLayout:
+        id: content_nav
+
+        BoxLayout:
+            id: nav_tabs
+            size_hint_x: .3
+            orientation: 'vertical'
+            spacing: 3
+            canvas.before:
+                Color:
+                    rgba: (.4,.4,.4,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Button:
+                id: user_button
+                text:'Your Stats'
+                group: 'navbar'
+                on_press: root.manager.current = 'player'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Your Guild'
+                group: 'navbar'
+                on_press: root.manager.current = 'guild'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Boosters'
+                group: 'navbar'
+                on_press: root.manager.current = 'boosters'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Watch Dog Bans'
+                group: 'navbar'
+                on_press: root.manager.current = 'Player'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+
+            Label:
+                id: sp
+                text: ''
+                size_hint_y: .4
+
+        BoxLayout:
+            id: content
+            size_hint_x: 2
