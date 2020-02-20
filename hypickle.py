@@ -57,9 +57,9 @@ lastlogin = player_data['last_login']
 online_offline = "[color=55FF55]Playing: " + player_data['last_game'] if player_data["online"] else "[color=FF5555]Status: Offline"
 
 bw_losses = "{:,}".format(player_data['stats']['BedWars']['losses'])
-bw_losses = "Losses: " + bw_losses
+bw_losses = "" + bw_losses
 bw_wins = "{:,}".format(player_data['stats']['BedWars']['wins'])
-bw_wins = "Wins: " + bw_wins
+bw_wins = "" + bw_wins
 
 
 #try:
@@ -136,8 +136,12 @@ class Hypicklepanel(App):
         self.firstlogin = "First Login: " + firstlogin
         self.lastlogin = "Last Login: " + lastlogin
         self.online = online_offline
-        self.bw_wins = bw_wins
-        self.bw_losses = bw_losses
+        self.bw_wins = "" + "{:,}".format(player_data['stats']['BedWars']['wins'])
+        self.bw_losses = "" + "{:,}".format(player_data['stats']['BedWars']['losses'])
+        self.bw_w_l = "" + "{:,}".format(player_data['stats']['BedWars']['w_l'])
+        self.bw_final_kills = "" + "{:,}".format(player_data['stats']['BedWars']['final_kills'])
+        self.bw_final_deaths = "" + "{:,}".format(player_data['stats']['BedWars']['final_deaths'])
+        self.bw_final_k_d = "" + "{:,}".format(player_data['stats']['BedWars']['final_k_d'])
         return HypicklePanel()
 
 if __name__ =='__main__':

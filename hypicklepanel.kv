@@ -69,6 +69,14 @@
             allow_stretch: False
             size_hint: .37, 1.7
             size: self.texture_size
+
+        Button:
+            id: button
+            text: ""
+            on_press: root.manager.current = 'bedwars'
+            size_hint: .15,.22
+            pos_hint: {'x': .23675, 'center_y': .6}
+            background_color: (0,0,0,0)
         Label:
             id: player_rank_name
             markup: True
@@ -163,39 +171,122 @@
             id: bw_wins
             markup: True
             text: 'Wins: '
-            size_hint: 1.03, 1.23
-            font_size: 30
+            bold: True
+            size_hint: 1.03, 1.275
+            font_size: 20
             halign: 'left'
             valign: 'middle'
             text_size: cm(24), cm(16)
-            Label:
-                id: bw_wins
-                markup: True
-                text: app.bw_wins
-                size_hint: 1.05, 1.23
-                font_size: 30
-                halign: 'left'
-                valign: 'middle'
-                text_size: cm(24), cm(16)
-            Label:
-                id: bw_losses
-                markup: True
-                text: 'Losses'
-                size_hint: 1.03, 1.23
-                font_size: 30
-                halign: 'left'
-                valign: 'middle'
-                text_size: cm(24), cm(16)
-            Label:
-                id: bw_losses
-                markup: True
-                text: app.bw_losses
-                size_hint: 1.03, 1.23
-                font_size: 30
-                halign: 'left'
-                valign: 'middle'
-                text_size: cm(24), cm(16)
+        Label:
+            id: bw_wins
+            markup: True
+            text: app.bw_wins
+            size_hint: 1.18, 1.275
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_losses
+            markup: True
+            text: 'Losses: '
+            bold: True
+            size_hint: 1.03, 1.225
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_losses
+            markup: True
+            text: app.bw_losses
+            size_hint: 1.18, 1.225
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_w_l
+            markup: True
+            bold: True
+            text: 'W/L R: '
+            size_hint: 1.03, 1.175
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_w_l
+            markup: True
+            text: app.bw_w_l
+            size_hint: 1.18, 1.175
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_final_kills
+            markup: True
+            bold: True
+            text: 'Final Kills: '
+            size_hint: 1.03, 1.125
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_final_kills
+            markup: True
+            text: app.bw_final_kills
+            size_hint: 1.18, 1.125
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_final_deaths
+            markup: True
+            bold: True
+            text: 'Final Deaths: '
+            size_hint: 1.03, 1.075
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_final_deaths
+            markup: True
+            text: app.bw_final_deaths
+            size_hint: 1.18, 1.075
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_final_k_d
+            markup: True
+            bold: True
+            text: 'Final K/D R: '
+            size_hint: 1.03, 1.025
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_final_k_d
+            markup: True
+            text: app.bw_final_k_d
+            size_hint: 1.18, 1.025
+            font_size: 20
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
+
+
+
     FloatLayout:
+
         Image:
             id: player_head
             source: 'images/bedwars.png'
@@ -210,6 +301,7 @@
             max: 0.99
             value: app.level
             pos_hint: {'x': .23675, 'center_y': .825}
+
             canvas:
                 BorderImage:
                     border: (12, 12, 12, 12)
