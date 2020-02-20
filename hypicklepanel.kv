@@ -39,6 +39,7 @@
         screen_two: screen_two
         screen_three: screen_three
         screen_four: screen_four
+
         ScreenOne:
             id: screen_one
             name: 'player'
@@ -55,7 +56,7 @@
             manager: screen_manager
 
         ScreenFour:
-            id: screen_three
+            id: screen_four
             name: 'watchdog'
             manager: screen_manager
 
@@ -171,7 +172,7 @@
                 id: bw_wins
                 markup: True
                 text: app.bw_wins
-                size_hint: 1.03, 1.23
+                size_hint: 1.05, 1.23
                 font_size: 30
                 halign: 'left'
                 valign: 'middle'
@@ -188,7 +189,7 @@
             Label:
                 id: bw_losses
                 markup: True
-                text: app.losses
+                text: app.bw_losses
                 size_hint: 1.03, 1.23
                 font_size: 30
                 halign: 'left'

@@ -13,7 +13,7 @@ import time
 import math
 
 player_data = requests.get('https://api.slothpixel.me/api/players/need_not').json()
-player_guild = requests.get('https://api.slothpixel.me/api/guilds/' + player_data['username']).json()
+player_guild = requests.get('https://api.slothpixel.me/api/guilds/' + player_data['uuid']).json()
 
 if "error" in player_guild:
     player_guild = {"tag": "", "tag_color": "", "name": "None"}
@@ -56,16 +56,17 @@ lastlogin = player_data['last_login']
 
 online_offline = "[color=55FF55]Playing: " + player_data['last_game'] if player_data["online"] else "[color=FF5555]Status: Offline"
 
+bw_losses = "{:,}".format(player_data['stats']['BedWars']['losses'])
+bw_losses = "Losses: " + bw_losses
+bw_wins = "{:,}".format(player_data['stats']['BedWars']['wins'])
+bw_wins = "Wins: " + bw_wins
 
-try:
-    bw_wins = player_data['stats']['BedWars']['wins']
-except KeyError:
-    bw_wins = 0
 
-try:
-    bw_losses = player_data['stats']['BedWars']['losses']
-except KeyError:
-    bw_losses = 0
+#try:
+#    bw_wins = player_data['stats']['BedWars']['wins']
+#except KeyError:
+#    bw_wins = 0
+
 
 rank_raw = player_data['rank']
 if rank_raw == "HELPER": lastlogin = 1
