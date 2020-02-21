@@ -1,4 +1,5 @@
 #:import NoTransition kivy.uix.screenmanager.NoTransition
+#: import ew kivy.uix.effectwidget
 
 <Hypicklepanel>:
 
@@ -39,6 +40,7 @@
         screen_two: screen_two
         screen_three: screen_three
         screen_four: screen_four
+        screen_five: screen_five
 
         ScreenOne:
             id: screen_one
@@ -58,6 +60,11 @@
         ScreenFour:
             id: screen_four
             name: 'watchdog'
+            manager: screen_manager
+
+        ScreenFive:
+            id: screen_five
+            name: 'bedwars'
             manager: screen_manager
 
 
@@ -523,6 +530,72 @@
         valign: 'middle'
         color: 1,1,1,1
 
+
+    BoxLayout:
+        id: content_nav
+
+        BoxLayout:
+            id: nav_tabs
+            size_hint_x: .3
+            orientation: 'vertical'
+            spacing: 3
+            canvas.before:
+                Color:
+                    rgba: (.4,.4,.4,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Button:
+                id: user_button
+                text:'Your Stats'
+                group: 'navbar'
+                on_press: root.manager.current = 'player'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Your Guild'
+                group: 'navbar'
+                on_press: root.manager.current = 'guild'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Boosters'
+                group: 'navbar'
+                on_press: root.manager.current = 'boosters'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+            Button:
+                id: user_button
+                text:'Watch Dog Bans'
+                group: 'navbar'
+                on_press: root.manager.current = 'watchdog'
+                size_hint_y: .05
+                background_color: (.3,.3,.3,1)
+                background_normal: ''
+
+            Label:
+                id: sp
+                text: ''
+                size_hint_y: .4
+
+        BoxLayout:
+            id: content
+            size_hint_x: 2
+
+<ScreenFive>:
+    FloatLayout:
+        Image:
+            id: player_head
+            source: "images/bedwars_full.png"
+            allow_stretch: False
+            size_hint: 1.2, 1.2
+            pos_hint: {'x': -.05, 'center_y': .5}
+            size: self.texture_size
 
     BoxLayout:
         id: content_nav

@@ -99,6 +99,8 @@ Config.set('graphics', 'boarderless', 1)
 Config.set('graphics', 'minimum_width', 1000)
 Config.set('graphics', 'minimum_height', 650)
 
+class ScreenFive(Screen):
+    pass
 
 class ScreenFour(Screen):
     pass
@@ -118,6 +120,7 @@ class Manager(ScreenManager):
     screen_two = ObjectProperty(None)
     screen_three = ObjectProperty(None)
     screen_four = ObjectProperty(None)
+    screen_five = ObjectProperty(None)
 
 class HypicklePanel(BoxLayout):
     def __init__(self, **kwargs):
