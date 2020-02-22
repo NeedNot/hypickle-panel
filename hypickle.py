@@ -11,8 +11,11 @@ from kivy.properties import ObjectProperty
 from kivy.uix.progressbar import ProgressBar
 import time
 import math
+import itertools
 
-player_data = requests.get('https://api.slothpixel.me/api/players/need_not').json()
+
+
+player_data = requests.get('https://api.slothpixel.me/api/players/producktive').json()
 player_guild = requests.get('https://api.slothpixel.me/api/guilds/' + player_data['uuid']).json()
 
 if "error" in player_guild:
@@ -37,17 +40,11 @@ rank = rank.replace("[", "&bl;").replace("]", "&br; ").replace("&0", "[color=000
 level = player_data['level']
 
 
-quests = player_data['quests_completed']
-quests = "{:,}".format(quests)
-quests = '[color=5555FF]Quests: ' + quests
+quests = '[color=5555FF][b]Quests [/b]: ' + "{:,}".format(player_data['quests_completed'])
 
-karma = player_data['karma']
-karma = "{:,}".format(karma)
-karma = "[color=FF55FF]Karma: " + karma
+karma = "[color=FF55FF][b]Karma: [/b]" + "{:,}".format(player_data['karma'])
 
-achievement_points = player_data['achievement_points']
-achievement_points = "{:,}".format(achievement_points)
-achievement_points = '[color=55FFFF]Achievement Points: ' + achievement_points
+achievement_points = '[color=55FFFF][b]Achievement Points: [/b]' + "{:,}".format(player_data['achievement_points'])
 
 
 
@@ -93,6 +90,85 @@ with open("images/playerbody.png",'wb') as f:
     f.write(playerhead.content)
 
 
+bw_level = player_data['stats']['BedWars']['level']
+if (bw_level < 100):
+    bw_prestige = "stone"
+
+if (bw_level >= 100):
+    bw_prestige = "iron"
+
+if (bw_level >= 200):
+    bw_prestige = "gold"
+
+if (bw_level >= 300):
+    bw_prestige = "diamond"
+
+if (bw_level >= 400):
+    bw_prestige = "emerald"
+
+if (bw_level >= 500):
+    bw_prestige = "sapphire"
+
+if (bw_level >= 600):
+    bw_prestige = "ruby"
+
+if (bw_level >= 700):
+    bw_prestige = "crystal"
+
+if (bw_level >= 800):
+    bw_prestige = "opal"
+
+if (bw_level >= 900):
+    bw_prestige = "amethyst"
+
+if (bw_level >= 1000):
+    bw_prestige = "rainbow"
+
+bw_level = str(bw_level)
+colors = ['FFAA00','FFFF55','55FF55','55FFFF','FF55FF','AA00AA']
+
+def color_level(score):
+    result = ''
+    for digit, color in zip(str(bw_level),itertools.cycle(colors)):
+        result += f'[color={color}]{digit}'
+    return result
+
+bw_level = (color_level(1000))
+
+if bw_prestige == "stone":
+    bw_level = "[color=AAAAAA]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "iron":
+    bw_level = "[color=FFFFFF]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "gold":
+    bw_level = "[color=FFAA00]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "diamond":
+    bw_level = "[color=55FFFF]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "emerald":
+    bw_level = "[color=00AA00]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "sapphire":
+    bw_level = "[color=00AAAA]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "ruby":
+    bw_level = "[color=AA0000]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "crystal":
+    bw_level = "[color=FF55FF]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "opal":
+    bw_level = "[color=5555FF]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "amethyst":
+    bw_level = "[color=AA00AA]" + '&bl;' + str(player_data['stats']['BedWars']['level']) + '[font=fonts/seguisym]\u272b[/font]&br;'
+
+if bw_prestige == "rainbow":
+    bw_level = '[color=FF5555]&bl;[/color]' + str(bw_level) + '[color=FF55FF][font=fonts/seguisym]\u272b[/font][color=AA00AA]&br;'
+bw_level = "[b]Level: [/b]" + bw_level
+
 Config.set('input', 'mouse', 'mouse,disable_multitouch')
 Config.set('graphics', 'resizable', 1)
 Config.set('graphics', 'window_state', 'maximized')
@@ -136,9 +212,9 @@ class Hypicklepanel(App):
         self.quests = quests
         self.ap = achievement_points
         self.karma = karma
-        self.guild = "[color=00AA00]Guild: " + player_guild['name']
-        self.firstlogin = "First Login: " + firstlogin
-        self.lastlogin = "Last Login: " + lastlogin
+        self.guild = "[color=00AA00][b]Guild: [/b]" + player_guild['name']
+        self.firstlogin = "[b]First Login:[/b] " + firstlogin
+        self.lastlogin = "[b]Last Login[/b]: " + lastlogin
         self.online = online_offline
         self.bw_wins = "" + "{:,}".format(player_data['stats']['BedWars']['wins'])
         self.bw_losses = "" + "{:,}".format(player_data['stats']['BedWars']['losses'])
@@ -153,6 +229,16 @@ class Hypicklepanel(App):
         self.coins = "[color=FFAA00][b]Coins: [/b]" + "{:,}".format((player_data['total_coins']))
         self.wins = "[color=00AA00][b]Wins: [/b]" + "{:,}".format((player_data['total_wins']))
         self.kills = "[color=AA0000][b]Kills: [/b]" + "{:,}".format((player_data['total_kills']))
+        self.bw_winstreak = "[color=5555FF][b]Winstreak: [/b]" + "{:,}".format((player_data['stats']['BedWars']['winstreak']))
+        self.bw_coins = "[color=FFAA00][b]Coins: [/b]" + "{:,}".format((player_data['stats']['BedWars']['coins']))
+        self.bw_level = bw_level
+        self.bw_loot_boxes = "[b][color=AA00AA]Loot Boxes:[/b] [color=FF5555]" + "{:,}".format(player_data['stats']['BedWars']['boxes']['current'])
+        self.bw_kills_all = "[b]Kills:[/b] " + "{:,}".format(player_data['stats']['BedWars']['kills'])
+        self.bw_deaths_all = "[b]Deaths:[/b] " + "{:,}".format(player_data['stats']['BedWars']['deaths'])
+        self.bw_k_d_all = "[b]K/D R:[/b] " + "{:,}".format(player_data['stats']['BedWars']['k_d'])
+        self.bw_final_kills_all = "[b]Final Kills:[/b] " + "{:,}".format(player_data['stats']['BedWars']['final_kills'])
+        self.bw_final_deaths_all = "[b]Final Deaths:[/b] " + "{:,}".format(player_data['stats']['BedWars']['final_deaths'])
+        self.bw_final_k_d_all = "[b]Final K/D R:[/b] " + "{:,}".format(player_data['stats']['BedWars']['final_k_d'])
         return HypicklePanel()
 
 if __name__ =='__main__':

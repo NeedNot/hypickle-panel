@@ -97,7 +97,6 @@
         Label:
             id: quests
             markup: True
-            bold: True
             text: app.quests
             size_hint: .95, 1.5
             font_size: 30
@@ -107,7 +106,6 @@
         Label:
             id: ap
             markup: True
-            bold: True
             text: app.ap
             size_hint: .95, 1.57
             font_size: 30
@@ -117,7 +115,6 @@
         Label:
             id: karma
             markup: True
-            bold: True
             text: app.karma
             size_hint: 1.4, 1.57
             font_size: 30
@@ -127,7 +124,6 @@
         Label:
             id: guild
             markup: True
-            bold: True
             text: app.guild
             size_hint: 1.4, 1.5
             font_size: 30
@@ -137,7 +133,6 @@
         Label:
             id: firstlogin
             markup: True
-            bold: True
             text: app.firstlogin
             size_hint: 1.75, 1.57
             font_size: 30
@@ -147,7 +142,6 @@
         Label:
             id: lastlogin
             markup: True
-            bold: True
             text: app.lastlogin
             size_hint: 1.75, 1.5
             font_size: 30
@@ -625,15 +619,24 @@
             source: "images/emerald.png"
             allow_stretch: True
             size_hint: .06, .06
-            pos_hint: {'x': .13, 'center_y': .95}
+            pos_hint: {'x': .13, 'center_y': .945}
             size: self.texture_size
         Label:
             id: emerald
             markup: True
             text: app.emeralds
-            size_hint: .83, 1.902
+            size_hint: .83, 1.89
             font_size: 30
             bold: True
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_coins
+            markup: True
+            text: app.bw_winstreak
+            size_hint: 1, 1.89
+            font_size: 30
             halign: 'left'
             valign: 'middle'
             text_size: cm(24), cm(16)
@@ -648,6 +651,15 @@
             valign: 'middle'
             text_size: cm(24), cm(16)
         Label:
+            id: coins
+            markup: True
+            text: app.bw_coins
+            size_hint: 1, 1.76
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
             id: gold
             markup: True
             text: app.gold
@@ -658,12 +670,30 @@
             valign: 'middle'
             text_size: cm(24), cm(16)
         Label:
+            id: bw_level
+            markup: True
+            text: app.bw_level
+            size_hint: 1, 1.645
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
             id: iron
             markup: True
             text: app.iron
             size_hint: .83, 1.5265
             font_size: 30
             bold: True
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: bw_loot_boxes
+            markup: True
+            text: app.bw_loot_boxes
+            size_hint: 1, 1.5265
+            font_size: 30
             halign: 'left'
             valign: 'middle'
             text_size: cm(24), cm(16)
@@ -681,6 +711,65 @@
             size_hint: .06, .06
             pos_hint: {'x': .13, 'center_y': .82}
             size: self.texture_size
+
+        Label:
+            id: overall_kills
+            text: app.bw_kills_all
+            markup: True
+            size_hint: 1.3, 1.89
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
+        Label:
+            id: overall_deaths
+            text: app.bw_deaths_all
+            markup: True
+            size_hint: 1.3, 1.76
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: overall_k_d
+            markup: True
+            text: app.bw_k_d_all
+            size_hint: 1.3, 1.645
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
+        Label:
+            id: overall_final_kills
+            text: app.bw_final_kills_all
+            markup: True
+            size_hint: 1.6, 1.89
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
+        Label:
+            id: overall_final_deaths
+            text: app.bw_final_deaths_all
+            markup: True
+            size_hint: 1.6, 1.76
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: overall_final_k_d
+            markup: True
+            text: app.bw_final_k_d_all
+            size_hint: 1.6, 1.645
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
         Image:
             id: iron
             source: "images/iron.png"
@@ -740,6 +829,7 @@
                 id: sp
                 text: ''
                 size_hint_y: .4
+
 
         BoxLayout:
             id: content
