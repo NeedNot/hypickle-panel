@@ -288,9 +288,33 @@
             halign: 'left'
             valign: 'middle'
             text_size: cm(24), cm(16)
-
-
-
+        Label:
+            id: coins
+            markup: True
+            text: app.coins
+            size_hint: .75, .08
+            font_size: 50
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: kills
+            markup: True
+            text: app.kills
+            size_hint: 1.35, .08
+            font_size: 50
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: wins
+            markup: True
+            text: app.wins
+            size_hint: 1.8, .08
+            font_size: 50
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
 
     FloatLayout:
 
@@ -590,11 +614,79 @@
 <ScreenFive>:
     FloatLayout:
         Image:
-            id: player_head
+            id: background
             source: "images/bedwars_full.png"
             allow_stretch: False
             size_hint: 1.2, 1.2
             pos_hint: {'x': -.05, 'center_y': .5}
+            size: self.texture_size
+        Image:
+            id: emerald
+            source: "images/emerald.png"
+            allow_stretch: True
+            size_hint: .06, .06
+            pos_hint: {'x': .13, 'center_y': .95}
+            size: self.texture_size
+        Label:
+            id: emerald
+            markup: True
+            text: app.emeralds
+            size_hint: .83, 1.902
+            font_size: 30
+            bold: True
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: diamond
+            markup: True
+            text: app.diamonds
+            size_hint: .83, 1.76
+            font_size: 30
+            bold: True
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: gold
+            markup: True
+            text: app.gold
+            size_hint: .83, 1.645
+            font_size: 30
+            bold: True
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: iron
+            markup: True
+            text: app.iron
+            size_hint: .83, 1.5265
+            font_size: 30
+            bold: True
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Image:
+            id: diamond
+            source: "images/diamond.png"
+            allow_stretch: True
+            size_hint: .06, .06
+            pos_hint: {'x': .13, 'center_y': .88}
+            size: self.texture_size
+        Image:
+            id: gold
+            source: "images/gold.png"
+            allow_stretch: True
+            size_hint: .06, .06
+            pos_hint: {'x': .13, 'center_y': .82}
+            size: self.texture_size
+        Image:
+            id: iron
+            source: "images/iron.png"
+            allow_stretch: True
+            size_hint: .06, .06
+            pos_hint: {'x': .13, 'center_y': .76}
             size: self.texture_size
 
     BoxLayout:

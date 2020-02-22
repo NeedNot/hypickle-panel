@@ -39,15 +39,16 @@ level = player_data['level']
 
 quests = player_data['quests_completed']
 quests = "{:,}".format(quests)
-quests = 'Quests: ' + quests
+quests = '[color=5555FF]Quests: ' + quests
 
 karma = player_data['karma']
 karma = "{:,}".format(karma)
-karma = "Karma: " + karma
+karma = "[color=FF55FF]Karma: " + karma
 
 achievement_points = player_data['achievement_points']
 achievement_points = "{:,}".format(achievement_points)
-achievement_points = 'Achievement Points: ' + achievement_points
+achievement_points = '[color=55FFFF]Achievement Points: ' + achievement_points
+
 
 
 
@@ -135,7 +136,7 @@ class Hypicklepanel(App):
         self.quests = quests
         self.ap = achievement_points
         self.karma = karma
-        self.guild = "Guild: " + player_guild['name']
+        self.guild = "[color=00AA00]Guild: " + player_guild['name']
         self.firstlogin = "First Login: " + firstlogin
         self.lastlogin = "Last Login: " + lastlogin
         self.online = online_offline
@@ -145,6 +146,13 @@ class Hypicklepanel(App):
         self.bw_final_kills = "" + "{:,}".format(player_data['stats']['BedWars']['final_kills'])
         self.bw_final_deaths = "" + "{:,}".format(player_data['stats']['BedWars']['final_deaths'])
         self.bw_final_k_d = "" + "{:,}".format(player_data['stats']['BedWars']['final_k_d'])
+        self.emeralds = "[color=00AA00]" + "{:,}".format((player_data['stats']['BedWars']['resources_collected']['emerald']))
+        self.diamonds = "[color=55FFFF]" + "{:,}".format((player_data['stats']['BedWars']['resources_collected']['diamond']))
+        self.gold = "[color=FFAA00]" + "{:,}".format((player_data['stats']['BedWars']['resources_collected']['gold']))
+        self.iron = "[color=737373]" + "{:,}".format((player_data['stats']['BedWars']['resources_collected']['iron']))
+        self.coins = "[color=FFAA00][b]Coins: [/b]" + "{:,}".format((player_data['total_coins']))
+        self.wins = "[color=00AA00][b]Wins: [/b]" + "{:,}".format((player_data['total_wins']))
+        self.kills = "[color=AA0000][b]Kills: [/b]" + "{:,}".format((player_data['total_kills']))
         return HypicklePanel()
 
 if __name__ =='__main__':
