@@ -745,7 +745,7 @@
             id: overall_final_kills
             text: app.bw_final_kills_all
             markup: True
-            size_hint: 1.6, 1.89
+            size_hint: 1.55, 1.89
             font_size: 30
             halign: 'left'
             valign: 'middle'
@@ -755,7 +755,7 @@
             id: overall_final_deaths
             text: app.bw_final_deaths_all
             markup: True
-            size_hint: 1.6, 1.76
+            size_hint: 1.55, 1.76
             font_size: 30
             halign: 'left'
             valign: 'middle'
@@ -764,11 +764,70 @@
             id: overall_final_k_d
             markup: True
             text: app.bw_final_k_d_all
-            size_hint: 1.6, 1.645
+            size_hint: 1.55, 1.645
             font_size: 30
             halign: 'left'
             valign: 'middle'
             text_size: cm(24), cm(16)
+
+        Label:
+            id: overall_beds_broken
+            text: app.bw_beds_broken
+            markup: True
+            size_hint: 1.85, 1.89
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
+        Label:
+            id: overall_bed_lost
+            text: app.bw_beds_lost
+            markup: True
+            size_hint: 1.85, 1.76
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: overall_bed_B_l
+            markup: True
+            text: app.bw_beds_b_l
+            size_hint: 1.85, 1.645
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
+        Label:
+            id: overall_wins
+            text: app.bw_wins
+            markup: True
+            size_hint: 2.17, 1.89
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
+        Label:
+            id: overall_losses
+            text: app.bw_losses
+            markup: True
+            size_hint: 2.17, 1.76
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+        Label:
+            id: overall_bw_w_l
+            markup: True
+            text: app.bw_w_l
+            size_hint: 2.17, 1.645
+            font_size: 30
+            halign: 'left'
+            valign: 'middle'
+            text_size: cm(24), cm(16)
+
 
         Image:
             id: iron

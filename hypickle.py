@@ -15,7 +15,7 @@ import itertools
 
 
 
-player_data = requests.get('https://api.slothpixel.me/api/players/producktive').json()
+player_data = requests.get('https://api.slothpixel.me/api/players/gamerboy80').json()
 player_guild = requests.get('https://api.slothpixel.me/api/guilds/' + player_data['uuid']).json()
 
 if "error" in player_guild:
@@ -239,6 +239,12 @@ class Hypicklepanel(App):
         self.bw_final_kills_all = "[b]Final Kills:[/b] " + "{:,}".format(player_data['stats']['BedWars']['final_kills'])
         self.bw_final_deaths_all = "[b]Final Deaths:[/b] " + "{:,}".format(player_data['stats']['BedWars']['final_deaths'])
         self.bw_final_k_d_all = "[b]Final K/D R:[/b] " + "{:,}".format(player_data['stats']['BedWars']['final_k_d'])
+        self.bw_beds_broken = "[b]Beds Broken:[/b] " + "{:,}".format(player_data['stats']['BedWars']['beds_broken'])
+        self.bw_beds_lost = "[b]Beds Lost:[/b] " + "{:,}".format(player_data['stats']['BedWars']['beds_lost'])
+        self.bw_beds_b_l = "[b]Beds B/L R:[/b] " + "{:,}".format(player_data['stats']['BedWars']['bed_ratio'])
+        self.bw_wins = "[b]Wins:[/b] " + "{:,}".format(player_data['stats']['BedWars']['wins'])
+        self.bw_losses = "[b]Losses:[/b] " + "{:,}".format(player_data['stats']['BedWars']['losses'])
+        self.bw_w_l = "[b]W/L R:[/b] " + "{:,}".format(player_data['stats']['BedWars']['w_l'])
         return HypicklePanel()
 
 if __name__ =='__main__':
