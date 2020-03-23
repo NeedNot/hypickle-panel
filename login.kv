@@ -1,0 +1,52 @@
+#
+<LoginScreen>:
+    id: main_win
+
+    BoxLayout:
+        id: main
+        canvas.before:
+            Color:
+                rgba: (.2,.2,.2,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+    FloatLayout:
+        Image:
+            id: background
+            source: "login/login.png"
+            allow_stretch: False
+            size_hint: 2, 2
+            pos_hint: {'x': -1, 'center_y': .5}
+            size: self.texture_size
+        Label:
+            id: background
+            text: '[color=a10f00][font=fonts/impact.ttf]WELCOME!'
+            size_hint_x: 1
+            pos_hint: {'x': -.5, 'center_y': .89}
+            font_size: 75
+            markup: True
+        Label:
+            id: background
+            text: '[color=a10f00][font=fonts/impact.ttf]Please enter a username or UUID'
+            size_hint_x: 1
+            pos_hint: {'x': -.5, 'center_y': .40}
+            text_size: cm(10), cm(4)
+            font_size: 40
+            markup: True
+            halign: 'center'
+        TextInput:
+            id: TextInput
+            size_hint_y: .05
+            size_hint_x: 1.4
+            pos_hint: {'x': -.7, 'center_y': .2}
+            focus: True
+            hint_text: 'Username or UUID'
+            text: app.playername
+            on_text: app.playername = self.text
+        Button:
+            id: btnExit
+            text: "Enter"
+            on_press: app.stop()
+            size_hint_y: .1
+            pos_hint: {'x': -.5, 'center_y': .08}

@@ -15,7 +15,8 @@ import itertools
 
 
 
-player_data = requests.get('https://api.slothpixel.me/api/players/gamerboy80').json()
+
+player_data = requests.get('https://api.slothpixel.me/api/players/' + player).json()
 player_guild = requests.get('https://api.slothpixel.me/api/guilds/' + player_data['uuid']).json()
 
 if "error" in player_guild:
@@ -66,10 +67,9 @@ bw_wins = "" + bw_wins
 #    bw_wins = 0
 
 
-rank_raw = player_data['rank']
-if rank_raw == "HELPER": lastlogin = 1
-if rank_raw == "ADMIN": lastlogin = 1
-if rank_raw == "MODERATOR": lastlogin = 1
+if player_data['rank'] == "HELPER": lastlogin = 1
+if player_data['rank'] == "ADMIN": lastlogin = 1
+if player_data['rank'] == "MODERATOR": lastlogin = 1
 
 firstlogin = firstlogin/1000
 firstlogin = time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(firstlogin))
