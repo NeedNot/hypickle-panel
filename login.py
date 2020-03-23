@@ -27,10 +27,16 @@ class Login(App):
   def build(self):
     self.playername = ''
     return LoginScreen()
+  def enter_key():
+      app.stop()
+
+
 
 if __name__ =='__main__':
     Login().run()
 app = App.get_running_app()
 
 print(app.playername)
-player = requests.get('https://api.slothpixel.me/api/players')
+player = requests.get('https://api.slothpixel.me/api/players'+ app.playername).json()
+
+print(player['error'])

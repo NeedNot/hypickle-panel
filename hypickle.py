@@ -16,7 +16,7 @@ import itertools
 
 
 
-player_data = requests.get('https://api.slothpixel.me/api/players/' + player).json()
+player_data = requests.get('https://api.slothpixel.me/api/players/plancke').json()
 player_guild = requests.get('https://api.slothpixel.me/api/guilds/' + player_data['uuid']).json()
 
 if "error" in player_guild:
@@ -67,9 +67,9 @@ bw_wins = "" + bw_wins
 #    bw_wins = 0
 
 
-if player_data['rank'] == "HELPER": lastlogin = 1
-if player_data['rank'] == "ADMIN": lastlogin = 1
-if player_data['rank'] == "MODERATOR": lastlogin = 1
+if player_data['rank'] == "HELPER": lastlogin = 1000
+if player_data['rank'] == "ADMIN": lastlogin = 1000
+if player_data['rank'] == "MODERATOR": lastlogin = 1000
 
 firstlogin = firstlogin/1000
 firstlogin = time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(firstlogin))
@@ -78,7 +78,11 @@ firstlogin = time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(firstlogin))
 lastlogin = lastlogin/1000
 lastlogin = time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(lastlogin))
 
-if lastlogin == "Wed, 31 Dec 1969 16:00:00": lastlogin = "Unknown"
+if player_data['rank'] == "HELPER": lastlogin = 1
+if player_data['rank'] == "ADMIN": lastlogin = 1
+if player_data['rank'] == "MODERATOR": lastlogin = 1
+
+if lastlogin == 1: lastlogin = "Unknown"
 
 image_url = "https://crafatar.com/renders/body/"  + player_data['uuid'] + "?overlay"
 
