@@ -10,7 +10,7 @@ from kivy.properties import StringProperty
 from kivy.uix.widget import Widget
 from pynput.keyboard import Key, Listener
 from kivy.base import EventLoop
-
+import os
 
 
 Config.set('input', 'mouse', 'mouse,disable_multitouch')
@@ -31,7 +31,7 @@ class Login(App):
 
     def on_start(self):
         EventLoop.window.bind(on_keyboard=self.hook_keyboard)
-        
+
     def hook_keyboard(self, window, scancode, *_):
         if scancode == 13:
             #enter key
@@ -52,6 +52,10 @@ app = App.get_running_app()
 
 
 print(app.playername)
-player = requests.get('https://api.slothpixel.me/api/players'+ app.playername).json()
+player = app.playername.strip()
+playerstats = requests.get('https://api.slothpixel.me/api/players/'+ player).json()
 
-print(player['error'])
+if player == "": playerstats = {"quit": "true"}
+if "error" in playerstats: os.system('login.py')
+if "username" in playerstats: os.system('hypickle.py %s' % player)
+#os.system('cmd /k "py hypickle.py %s"' % player)

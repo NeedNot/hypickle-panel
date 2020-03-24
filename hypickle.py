@@ -12,11 +12,13 @@ from kivy.uix.progressbar import ProgressBar
 import time
 import math
 import itertools
+import sys
+import getopt, sys
 
+playername = str(sys.argv[1])
 
+player_data = requests.get('https://api.slothpixel.me/api/players/' + playername).json()
 
-
-player_data = requests.get('https://api.slothpixel.me/api/players/plancke').json()
 player_guild = requests.get('https://api.slothpixel.me/api/guilds/' + player_data['uuid']).json()
 
 if "error" in player_guild:
