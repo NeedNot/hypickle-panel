@@ -27,12 +27,21 @@
             font_size: 75
             markup: True
         Label:
-            id: background
+            id: enter
             text: '[color=a10f00][font=fonts/impact.ttf]Please enter a username or UUID'
             size_hint_x: 1
             pos_hint: {'x': -.5, 'center_y': .40}
             text_size: cm(10), cm(4)
             font_size: 40
+            markup: True
+            halign: 'center'
+        Label:
+            id: inncorect
+            text: app.wrongname
+            size_hint_x: 1
+            pos_hint: {'x': -.5, 'center_y': .35}
+            text_size: cm(10), cm(4)
+            font_size: 25
             markup: True
             halign: 'center'
         TextInput:
@@ -48,8 +57,10 @@
             cursor_blink: False
             on_text_validate: app.stop()
         Button:
-            id: btnExit
+            id: Exit
             text: "Enter"
             on_press: app.stop()
             size_hint_y: .1
-            pos_hint: {'x': -.5, 'center_y': .08}
+            size_hint_x: 1.4
+            pos_hint: {'x': -.7, 'center_y': .08}
+            background_color: (2,1.2,0,1)

@@ -22,6 +22,14 @@ Config.set('graphics', 'borderless', 1)
 
 
 
+
+
+
+
+f = open("name", "r")
+name_wrong = f.read()
+
+
 class LoginScreen(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -34,10 +42,11 @@ class Login(App):
 
     def hook_keyboard(self, window, scancode, *_):
         if scancode == 13:
-            #enter key
+
             self.stop()
 
     def build(self):
+        self.wrongname = name_wrong
 
 
         return LoginScreen()
@@ -56,6 +65,12 @@ player = app.playername.strip()
 playerstats = requests.get('https://api.slothpixel.me/api/players/'+ player).json()
 
 if player == "": playerstats = {"quit": "true"}
+if "error" in playerstats:
+    f = open("name", "w")
+    f.write("[color=a10f00][font=fonts/impact.ttf]Invalid username or UUID")
+    f.close()
 if "error" in playerstats: os.system('login.py')
 if "username" in playerstats: os.system('hypickle.py %s' % player)
-#os.system('cmd /k "py hypickle.py %s"' % player)
+f = open("name", "w")
+f.write("")
+f.close()
