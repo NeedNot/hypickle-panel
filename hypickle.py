@@ -3,7 +3,6 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.config import Config
 import requests
 from kivy.graphics import *
-import requests
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.lang import Builder
@@ -80,11 +79,10 @@ firstlogin = time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(firstlogin))
 lastlogin = lastlogin/1000
 lastlogin = time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(lastlogin))
 
-if player_data['rank'] == "HELPER": lastlogin = 1
-if player_data['rank'] == "ADMIN": lastlogin = 1
-if player_data['rank'] == "MODERATOR": lastlogin = 1
+if player_data['rank'] == "HELPER": lastlogin = "Unknown"
+if player_data['rank'] == "ADMIN": lastlogin = "Unknown"
+if player_data['rank'] == "MODERATOR": lastlogin = "Unknown"
 
-if lastlogin == 1: lastlogin = "Unknown"
 
 image_url = "https://crafatar.com/renders/body/"  + player_data['uuid'] + "?overlay"
 

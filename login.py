@@ -70,7 +70,7 @@ if "error" in playerstats:
     f.write("[color=a10f00][font=fonts/impact.ttf]Invalid username or UUID")
     f.close()
 if "error" in playerstats: os.system('login.py')
-if "username" in playerstats: os.system('hypickle.py %s' % player)
+if "username" in playerstats: os.system('py hypickle.py %s' % player)
 f = open("name", "w")
 f.write("")
 f.close()
